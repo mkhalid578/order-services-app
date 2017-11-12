@@ -2,8 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/list_item_height"
-    android:minHeight="@dimen/list_item_height">
+    android:layout_height="200dp"
+    android:minHeight="200dp">
 
 
     <RelativeLayout
@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_weight="1"
+            android:layout_marginTop="15dp"
             android:gravity="bottom"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
@@ -31,9 +32,10 @@
         <TextView
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="88dp"
+            android:layout_height="44dp"
             android:layout_below="@id/itemName"
             android:layout_weight="1"
+            android:layout_marginTop="15dp"
             android:gravity="top"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_below="@id/email"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:gravity="top"
             android:textAppearance="?android:textAppearanceMedium"
