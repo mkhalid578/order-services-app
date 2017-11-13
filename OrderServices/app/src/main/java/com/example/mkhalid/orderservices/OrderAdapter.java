@@ -31,17 +31,17 @@ public class OrderAdapter extends ArrayAdapter<Order> {
 
         Order currentOrder = getItem(position);
 
-        TextView emailTextView = (TextView) listItemView.findViewById(R.id.email);
+        //TextView emailTextView = (TextView) listItemView.findViewById(R.id.email);
 
-        emailTextView.setText(currentOrder.getEmail());
+        //emailTextView.setText(currentOrder.getEmail());
 
         TextView itemTextView = (TextView) listItemView.findViewById(R.id.itemName);
 
         itemTextView.setText(currentOrder.getItem());
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        //TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
 
-        quantityTextView.setText(String.valueOf(currentOrder.getQuantity()));
+        //quantityTextView.setText(String.valueOf(currentOrder.getQuantity()));
 
         return listItemView;
     }

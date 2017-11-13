@@ -53,11 +53,11 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
-            return "View Order";
+            return "View";
         } else if (position == 1) {
-            return "Place Order";
+            return "Place";
         } else if (position == 2) {
-            return "Delete Order";
+            return "Delete";
         }
 
         return "";

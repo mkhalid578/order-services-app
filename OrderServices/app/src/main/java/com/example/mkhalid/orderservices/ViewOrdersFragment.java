@@ -1,12 +1,15 @@
 package com.example.mkhalid.orderservices;
 
+
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.ListView;
-
+import java.util.List;
+import android.os.AsyncTask;
+import android.util.Log;
 /**
  * Created by mkhalid on 11/10/17.
  */
@@ -15,20 +18,28 @@ import java.util.ArrayList;
 
 public class ViewOrdersFragment extends Fragment {
 
+    public ArrayList<Order> postOrders = new ArrayList<Order>();
+
     public ViewOrdersFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        String url = "https://order-services.herokuapp.com/api/v1/orders";
+
         View rootView = inflater.inflate(R.layout.word_list, container, false);
 
+        OrderAsyncTask task = new OrderAsyncTask();
+        task.execute(url);
+
         // Create a list of words
-        final ArrayList<Order> orders = new ArrayList<Order>();
-        orders.add(new Order("m.khalid999@gmail.com","iPad Pro 2017", 1, 599.99, "For educational purposes"));
+        //final ArrayList<Order> orders = new ArrayList<Order>();
+        //orders.add(new Order("m.khalid999@gmail.com","iPad Pro 2017", 1, 599.99, "For educational purposes"));
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
-        OrderAdapter adapter = new OrderAdapter(getActivity(), orders);
+        OrderAdapter adapter = new OrderAdapter(getActivity(), postOrders);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
@@ -66,8 +77,25 @@ public class ViewOrdersFragment extends Fragment {
         return rootView;
     }
 
+    private class OrderAsyncTask extends AsyncTask<String, Void, ArrayList<Order>> {
+
+        @Override
+        protected ArrayList<Order> doInBackground(String...strings) {
+            return Utils.fetchNewsData(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Order> orders) {
+
+            postOrders = orders;
+            Log.d("POST ORDERS", postOrders.toString());
+        }
+    }
+
     @Override
     public void onStop() {
         super.onStop();
     }
 }
+
+

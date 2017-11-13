@@ -2,8 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:minHeight="200dp">
+    android:layout_height="66dp"
+    android:minHeight="66dp">
 
 
     <RelativeLayout
@@ -21,37 +21,13 @@
             android:id="@+id/itemName"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_weight="1"
             android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="#D3D3D3"
             android:gravity="bottom"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingBottom="16dp"
             tools:text="lutti" />
-
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_below="@id/itemName"
-            android:layout_weight="1"
-            android:layout_marginTop="15dp"
-            android:gravity="top"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/white"
-            tools:text="one" />
-
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_below="@id/email"
-            android:layout_marginTop="15dp"
-            android:layout_weight="1"
-            android:gravity="top"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@android:color/white"
-            tools:text="one" />
 
     </RelativeLayout>
 </RelativeLayout>
