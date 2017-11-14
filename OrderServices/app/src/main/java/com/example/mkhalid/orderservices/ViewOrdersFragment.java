@@ -10,6 +10,9 @@ import android.widget.ListView;
 import java.util.List;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.AdapterView;
+import android.support.v7.app.AlertDialog;
+import android.content.DialogInterface;
 /**
  * Created by mkhalid on 11/10/17.
  */
@@ -50,20 +53,17 @@ public class ViewOrdersFragment extends Fragment {
         // {@link ListView} will display list items for each {@link Word} in the list.
         listView.setAdapter(adapter);
 
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Release the media player if it currently exists because we are about to
 
                 // Get the {@link Word} object at the given position the user clicked on
-                Word word = words.get(position);
-                ImageView image = new ImageView(getContext());
-                image.setImageResource(R.drawable.singer);
+                Order order = postOrders.get(position);
 
                 new AlertDialog.Builder(view.getContext())
-                        .setTitle("Surat (Chapter): " + word.getTitle())
-                        .setView(image)
-                        .setMessage("Reciter: " + word.getSingerTitle())
+                        .setTitle(order.getItem())
+                        .setMessage("Email: " + order.getEmail() + "\n" + "Cost: $" + order.getCost() + "\n" + "Quantity: " + order.getQuantity() + "\n" + "Description: " + order.getDescription() + "\n")
                         .setPositiveButton("OK",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {}
@@ -71,7 +71,7 @@ public class ViewOrdersFragment extends Fragment {
                         .show();
 
             }
-        });*/
+        });
 
 
         return rootView;

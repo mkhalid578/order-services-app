@@ -34,9 +34,9 @@ public class CategoryAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return new ViewOrdersFragment();
         } else if (position == 1) {
-            return new ViewOrdersFragment();
+            return new PlaceOrderFragment();
         } else if (position == 2) {
-            return new ViewOrdersFragment();
+            return new DeleteOrdersFragment();
         } else {
             return new ViewOrdersFragment();
         }
@@ -47,7 +47,7 @@ public class CategoryAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 5;
+        return 3;
     }
 
     @Override
