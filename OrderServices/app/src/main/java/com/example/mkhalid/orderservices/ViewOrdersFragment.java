@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.widget.ListView;
-import java.util.List;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.AdapterView;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.ProgressBar;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 /**
  * Created by mkhalid on 11/10/17.
  */
@@ -80,6 +81,14 @@ public class ViewOrdersFragment extends Fragment {
     private class OrderAsyncTask extends AsyncTask<String, Void, ArrayList<Order>> {
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            ProgressBar  progressBar = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
+            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+
+        }
+
+        @Override
         protected ArrayList<Order> doInBackground(String...strings) {
             return Utils.fetchNewsData(strings[0]);
         }
@@ -88,7 +97,6 @@ public class ViewOrdersFragment extends Fragment {
         protected void onPostExecute(ArrayList<Order> orders) {
 
             postOrders = orders;
-            Log.d("POST ORDERS", postOrders.toString());
         }
     }
 
