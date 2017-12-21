@@ -1,6 +1,7 @@
 package com.example.mkhalid.orderservices;
 
 
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.content.DialogInterface;
 import android.widget.ProgressBar;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.widget.RelativeLayout;
+import android.content.Intent;
 /**
  * Created by mkhalid on 11/10/17.
  */
@@ -26,13 +29,19 @@ public class ViewOrdersFragment extends Fragment {
 
     public ViewOrdersFragment() {}
 
+    private RelativeLayout loadingView;
+
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
         String url = "https://order-services.herokuapp.com/api/v1/orders";
 
         View rootView = inflater.inflate(R.layout.word_list, container, false);
+
+        loadingView = rootView.findViewById(R.id.results_loading_view);
+        loadingView.setVisibility(View.VISIBLE);
 
         OrderAsyncTask task = new OrderAsyncTask();
         task.execute(url);
@@ -83,8 +92,7 @@ public class ViewOrdersFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            ProgressBar  progressBar = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
-            progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+
 
         }
 
@@ -96,6 +104,7 @@ public class ViewOrdersFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<Order> orders) {
 
+            loadingView.setVisibility(View.GONE);
             postOrders = orders;
         }
     }
